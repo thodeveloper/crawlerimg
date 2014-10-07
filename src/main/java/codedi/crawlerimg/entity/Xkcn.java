@@ -3,66 +3,76 @@ package codedi.crawlerimg.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name = "image")
-@XmlRootElement
+@Table(name = "xkcn")
+
 public class Xkcn implements Serializable {
 	private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "name")
-    private String name;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "path")
-    private String path;
-    @Column(name = "created_at")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdAt;
-    
-	public Integer getId() {
+	private int id;
+	private String name;
+	private String path;
+	private String description;
+	private Date createdAt;
+	
+	public Xkcn() {
+	}
+	
+	public Xkcn(int id, String name, String path, String description, Date createdAt) {
+		this.id = id;
+		this.name = name;
+		this.path = path;
+		this.description = description;
+		this.createdAt = createdAt;
+	}
+	
+	@Id
+	@Column(name = "id", unique = true, nullable = false)
+	public int getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
+	
+	@Column(name = "name", nullable = true, length = 255)
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	@Column(name = "path", nullable = true, length = 255)
 	public String getPath() {
 		return path;
 	}
 	public void setPath(String path) {
 		this.path = path;
 	}
+	
+	@Column(name = "description", nullable = true)
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "created_at", nullable = true)
 	public Date getCreatedAt() {
 		return createdAt;
 	}
+
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
-    
+	
 }
