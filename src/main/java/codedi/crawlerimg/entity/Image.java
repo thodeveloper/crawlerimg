@@ -28,12 +28,12 @@ public class Image implements Serializable {
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 80)
+    @Size(min = 1, max = 255)
     @Column(name = "name")
     private String name;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 80)
+    @Size(min = 1, max = 255)
     @Column(name = "path")
     private String path;
     @Column(name = "created_at")
