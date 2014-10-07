@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "image")
 @XmlRootElement
-public class Image implements Serializable {
+public class Xkcn implements Serializable {
 	private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
