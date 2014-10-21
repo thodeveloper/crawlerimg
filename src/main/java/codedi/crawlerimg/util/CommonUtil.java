@@ -36,23 +36,20 @@ public class CommonUtil {
 	}
 
 	public static void uploadFileToS3() throws FileNotFoundException {
-		String accessKey = "insert your access key here!";
-		String secretKey = "insert your secret key here!";
-		String existingBucketName = "<your Bucket Name>";
-		String keyName = "mypic.JPG";
+		String accessKey = "AKIAJHE7GDTTGGGO3DNA";
+		String secretKey = "zK1f2DPt5BuiW4cllQYcCv9tidN6RviG8i0SaR4f";
+		String existingBucketName = "xkcn2014";
+		String keyName = "tumblr_ndfissHarR1qbd81ro1_1280.jpg";
 
-		String filePath = "E://Pics//mypic.JPG";
-		String amazonFileUploadLocationOriginal = existingBucketName + "/";
+		String filePath = "D://Workspace/crawlerimg/tumblr_ndfissHarR1qbd81ro1_1280.jpg";
+		String amazonFileUploadLocationOriginal = existingBucketName;
 
-		AWSCredentials credentials = new BasicAWSCredentials(accessKey,
-				secretKey);
+		AWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
 		AmazonS3 s3Client = new AmazonS3Client(credentials);
 
 		FileInputStream stream = new FileInputStream(filePath);
 		ObjectMetadata objectMetadata = new ObjectMetadata();
-		PutObjectRequest putObjectRequest = new PutObjectRequest(
-				amazonFileUploadLocationOriginal, keyName, stream,
-				objectMetadata);
+		PutObjectRequest putObjectRequest = new PutObjectRequest(amazonFileUploadLocationOriginal, keyName, stream, objectMetadata);
 		PutObjectResult result = s3Client.putObject(putObjectRequest);
 		System.out.println(result);
 	}
